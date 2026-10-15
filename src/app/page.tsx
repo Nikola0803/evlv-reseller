@@ -27,7 +27,7 @@ const distributionTicker = [
 
 const faqs = [
   ["Is this an affiliate program?", "No. Approved partners purchase real inventory at partner pricing and operate their own customer-order workflow. There are no downlines or recruiting commissions."],
-  ["Are the retail multiples guaranteed?", "No. The 2.5x example is a planning illustration based on current market positioning, not a promised result. Depending on the product, current retail pricing may represent roughly 2.5x, 3x, 4x, 5x, or 6x partner acquisition cost. A revenue multiple is not profit. Shipping, processing fees, taxes, discounts, returns, unsold inventory, and operating costs must still be deducted."],
+  ["Are the retail multiples guaranteed?", "No. The 4.2x example is a planning illustration based on current market positioning, not a promised result. Depending on the product, current retail pricing may represent roughly 2.5x, 3x, 4x, 5x, or 6x partner acquisition cost. A revenue multiple is not profit. Shipping, processing fees, taxes, discounts, returns, unsold inventory, and operating costs must still be deducted."],
   ["Where can I see the partner price list?", "The complete wholesale price list is private. Approved partners receive access inside their account after review. Partner pricing is not publicly displayed or distributed before approval."],
   ["Do I have to place a large opening order?", "No. The program is designed to let qualified partners begin with a controlled product mix and build from demonstrated demand. Available opening options are reviewed with each approved account."],
   ["Do I need a microsite to begin?", "No. You can begin with direct or in-person sales. An optional microsite gives you a separate online storefront, customer data, product documentation, and order visibility when you are ready."],
@@ -72,18 +72,18 @@ export default function PartnerNetworkPage() {
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,35,32,.08)_0%,rgba(5,35,32,.18)_38%,rgba(5,35,32,.94)_100%)]" />
           <div className="absolute inset-x-0 bottom-0 p-7 sm:p-10 md:p-12">
             <p className="text-[10px] font-bold uppercase tracking-[.24em] text-[#bad8cf]">Room to build</p>
-            <div className="mt-3 flex items-end gap-4"><span className="font-display text-[clamp(7rem,18vw,12rem)] font-semibold leading-[.72] tracking-[-.085em] text-[#e5c494]">2.5<span className="text-[.3em] tracking-[-.02em]">x</span></span><p className="mb-2 max-w-[190px] text-sm font-semibold leading-6 text-white/80">illustrative retail multiple based on current market pricing</p></div>
+            <div className="mt-3 flex items-end gap-4"><span className="font-display text-[clamp(7rem,18vw,12rem)] font-semibold leading-[.72] tracking-[-.085em] text-[#e5c494]">4.2<span className="text-[.3em] tracking-[-.02em]">x</span></span><p className="mb-2 max-w-[190px] text-sm font-semibold leading-6 text-white/80">illustrative retail multiple based on current market pricing</p></div>
             <p className="mt-7 max-w-lg border-l border-[#e5c494]/60 pl-4 text-xs leading-6 text-white/55">A planning example only. Actual pricing, gross margin, and operating results vary by product and seller. Earnings are not guaranteed.</p>
           </div>
         </Reveal>
         <Reveal className="flex flex-col justify-center px-7 py-16 sm:px-10 md:px-14 lg:px-16 lg:py-20">
           <p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#9fc9bc]">A clear wholesale model</p>
           <h2 className="mt-6 max-w-xl font-display text-4xl font-semibold leading-[1.03] tracking-[-.04em] md:text-5xl">Partner pricing designed to leave real margin.</h2>
-          <p className="mt-7 max-w-xl text-base leading-8 text-white/62">If an approved item is acquired for $100 and sold for $250, the $150 difference is gross margin before shipping, processing fees, tax, discounts, returns, and other operating costs.</p>
+          <p className="mt-7 max-w-xl text-base leading-8 text-white/62">If an approved item is acquired for $60 and sold for $250, the $190 difference is gross margin before shipping, processing fees, tax, discounts, returns, and other operating costs.</p>
           <div className="mt-10 grid grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-2 rounded-2xl border border-white/10 bg-white/[.045] p-4 sm:gap-4 sm:p-6">
-            <MarginFigure value="$100" label="Partner cost" />
+            <MarginFigure value="$60" label="Partner cost" />
             <span className="text-xl text-[#9fc9bc]">+</span>
-            <MarginFigure value="$150" label="Gross margin" accent />
+            <MarginFigure value="$190" label="Gross margin" accent />
             <span className="text-xl text-[#9fc9bc]">=</span>
             <MarginFigure value="$250" label="Suggested retail" />
           </div>
