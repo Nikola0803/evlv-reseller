@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
 import { ApplyPreview } from "@/components/ApplyPreview";
+import { StorefrontPreview, type StorefrontTemplate } from "@/components/StorefrontPreview";
 
 export const metadata: Metadata = {
   title: "EVLV Partner Network",
@@ -11,9 +12,9 @@ export const metadata: Metadata = {
 };
 
 const templates = [
-  { key: "creator", number: "01", name: "Editorial", fit: "Premium storytelling with a full shop", image: "/images/ambassadors/hero-creator.webp" },
-  { key: "studio", number: "02", name: "Precision", fit: "Documentation-first ecommerce", image: "/images/wholesale/evlv-white-label-dropship.png" },
-  { key: "catalogue", number: "03", name: "Direct", fit: "Fast mobile-first product discovery", image: "/images/certified/evlv-hero-multi-vials.png" },
+  { key: "creator" as StorefrontTemplate, number: "01", name: "Editorial", fit: "Premium storytelling with a full shop", accent: "#3157d5" },
+  { key: "studio" as StorefrontTemplate, number: "02", name: "Precision", fit: "Documentation-first ecommerce", accent: "#1684ad" },
+  { key: "catalogue" as StorefrontTemplate, number: "03", name: "Direct", fit: "Fast mobile-first product discovery", accent: "#b7e600" },
 ];
 
 const distributionTicker = [
@@ -104,9 +105,9 @@ export default function PartnerNetworkPage() {
     </section>
 
     <section id="templates" className="px-3 py-6 md:px-6 md:py-10">
-      <div className="mx-auto max-w-[1500px] rounded-[28px] bg-[#e7ebe7] px-5 py-20 md:px-10 md:py-28 lg:px-16">
+      <div className="mx-auto max-w-[1500px] rounded-[28px] bg-[#eef0f4] px-5 py-20 md:px-10 md:py-28 lg:px-16">
         <Reveal className="flex flex-col justify-between gap-7 md:flex-row md:items-end"><div><p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#4c766b]">Your optional online layer</p><h2 className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-[-.045em] md:text-6xl">Add a storefront.<br />Make it yours.</h2></div><p className="max-w-md text-sm leading-7 text-[#62716c]">Direct sellers can begin without one. When you want online reach, every concept connects to the same inventory, order, documentation, and support backbone.</p></Reveal>
-        <div className="mt-14 grid gap-7 lg:grid-cols-3">{templates.map((template) => <Reveal key={template.key} className="group"><Link href={`/templates/${template.key}`} className="block"><div className="relative aspect-[4/4.35] overflow-hidden rounded-[24px] bg-[#123832]"><Image src={template.image} alt={`${template.name} storefront preview`} fill sizes="(max-width:1024px) 100vw, 450px" className="object-cover transition duration-700 group-hover:scale-[1.035]" /><div className="absolute inset-0 bg-gradient-to-t from-[#082b28]/95 via-[#082b28]/5 to-transparent" /><span className="absolute left-5 top-5 rounded-full border border-white/25 bg-[#082b28]/50 px-3 py-2 text-[8px] font-bold uppercase tracking-[.15em] text-white backdrop-blur">Concept {template.number}</span><div className="absolute inset-x-0 bottom-0 p-7 text-white"><p className="text-[9px] font-bold uppercase tracking-[.16em] text-[#b8d8cf]">{template.fit}</p><div className="mt-2 flex items-end justify-between"><h3 className="font-display text-4xl font-semibold">{template.name}</h3><span className="grid h-11 w-11 place-items-center rounded-full border border-white/30 transition group-hover:bg-white group-hover:text-[#102d28]"><i className="ri-arrow-right-up-line" /></span></div></div></div></Link></Reveal>)}</div>
+        <div className="mt-14 grid gap-7 lg:grid-cols-3">{templates.map((template) => <Reveal key={template.key} className="group"><article className="relative overflow-hidden rounded-[24px] border border-black/10 bg-white shadow-[0_22px_55px_rgba(22,28,45,.09)] transition duration-500 group-hover:-translate-y-1 group-hover:shadow-[0_30px_70px_rgba(22,28,45,.16)]"><StorefrontPreview template={template.key} className="aspect-[16/10]" /><div className="relative p-6 sm:p-7"><span className="absolute inset-x-0 top-0 h-1" style={{ backgroundColor: template.accent }} /><div className="flex items-center justify-between gap-4"><span className="text-[8px] font-bold uppercase tracking-[.17em] text-[#717681]">Concept {template.number}</span><span className="grid h-10 w-10 place-items-center rounded-full border border-black/10 text-[#17191f] transition group-hover:bg-[#17191f] group-hover:text-white"><i className="ri-arrow-right-up-line" /></span></div><p className="mt-6 text-[9px] font-bold uppercase tracking-[.15em] text-[#6a6f7a]">{template.fit}</p><h3 className="mt-2 font-display text-4xl font-semibold tracking-[-.04em] text-[#17191f]">{template.name}</h3></div><Link href={`/templates/${template.key}`} aria-label={`Open ${template.name} storefront preview`} className="absolute inset-0 z-20" /></article></Reveal>)}</div>
       </div>
     </section>
 
