@@ -21,27 +21,27 @@ const templates = [
   {
     key: "creator",
     number: "01",
-    name: "Creator",
-    eyebrow: "Personality first",
-    body: "A story-led social storefront for partners whose audience already knows and trusts them.",
+    name: "Signature",
+    eyebrow: "Personal brand storefront",
+    body: "A high-touch editorial shop for creators and relationship sellers who are the face of their business.",
     image: "/images/ambassadors/hero-creator.webp",
     color: "#c8a578",
   },
   {
     key: "studio",
     number: "02",
-    name: "Research Studio",
-    eyebrow: "Documentation first",
-    body: "A refined technical presentation built around catalog clarity, batch records, and research standards.",
+    name: "Lab Ledger",
+    eyebrow: "Documentation-led storefront",
+    body: "A precise technical shop for operators who lead with batch records, catalogue clarity, and trust.",
     image: "/images/wholesale/evlv-white-label-dropship.png",
     color: "#83aa9f",
   },
   {
     key: "catalogue",
     number: "03",
-    name: "Private Catalogue",
-    eyebrow: "Commerce first",
-    body: "A fast, product-forward experience for returning customers and direct link-in-bio traffic.",
+    name: "Market",
+    eyebrow: "Fast commerce storefront",
+    body: "A polished product-first shop for returning buyers, social traffic, and quick mobile ordering.",
     image: "/images/certified/evlv-hero-multi-vials.png",
     color: "#e4c48e",
   },
@@ -55,10 +55,18 @@ const steps = [
 ];
 
 const partnerProfiles = [
-  ["ri-camera-lens-line", "Creators & educators", "Turn an existing audience into a reviewed, focused catalogue without building commerce infrastructure from zero."],
-  ["ri-building-2-line", "Gyms & wellness studios", "Add a controlled research-product channel with clear inventory, payment, and customer-order operations."],
-  ["ri-team-line", "Community operators", "Serve a trusted local or professional network through a permanent storefront and consistent documentation."],
-  ["ri-store-2-line", "Emerging resellers", "Start with a manageable batch, learn the operating system, and earn access to larger reviewed opportunities."],
+  ["ri-flask-line", "Category insiders", "People already familiar with research compounds, documentation, ordering expectations, and the questions customers ask."],
+  ["ri-hand-heart-line", "Trusted local connectors", "People whose friends, colleagues, or community already come to them for informed product recommendations."],
+  ["ri-building-2-line", "Gyms & community spaces", "Operators positioned to serve qualified local research demand through a controlled catalogue and clear process."],
+  ["ri-store-2-line", "First-time resellers", "People ready to turn category knowledge into a small, structured operation with EVLV infrastructure behind them."],
+];
+
+const customerLoop = [
+  ["01", "Already know the category", "Strong candidates are already part of the conversation and understand what local research customers look for."],
+  ["02", "Discover the opportunity through trust", "They hear about EVLV through a partner, community, gym, event, private outreach, or someone already in their network."],
+  ["03", "Apply directly to EVLV", "Every reseller is independently reviewed. Nobody earns money merely for recruiting another reseller."],
+  ["04", "Start with a controlled batch", "Approved partners select manageable inventory based on real demand—not a forced buy-in or oversized package."],
+  ["05", "Sell locally and replenish", "Partners serve customers in person and through their microsite, then reorder based on verified sales."],
 ];
 
 const starterPaths = [
@@ -67,11 +75,19 @@ const starterPaths = [
   { label: "Custom", title: "Plan with EVLV", body: "A reviewed inventory plan for established operators with a defined customer base and sales process.", detail: "Approval and volume dependent" },
 ];
 
+const partnerStages = [
+  { number: "01", label: "Test", title: "Small-batch wholesale", body: "Begin with a controlled product mix and wholesale access designed to validate real demand without overcommitting to inventory." },
+  { number: "02", label: "Operate", title: "Your EVLV-powered microsite", body: "Choose a premium storefront, set your public pricing and payment methods, then manage orders and stock from one operating dashboard." },
+  { number: "03", label: "Scale", title: "Custom brand + fulfillment", body: "Qualified higher-volume partners can work with our in-house team on a custom storefront and approved fulfillment under their own customer-facing brand." },
+];
+
 const faqs = [
   ["Is this an affiliate program?", "No. This concept is built around approved partners operating real inventory and their own customer-order workflow—not a recruiting chain."],
   ["Do you guarantee income?", "No. Outcomes depend on audience, effort, operating costs, pricing, and execution. EVLV does not publish or promise earnings."],
   ["Can anyone join?", "No. Each application is reviewed for fit, responsible positioning, business readiness, and ability to follow research-use-only requirements."],
-  ["What does EVLV provide?", "Approved inventory access, microsite infrastructure, documentation, order tools, operational guidance, and a bounded partner assistant."],
+  ["What does EVLV provide?", "Wholesale access, premium microsite infrastructure, documentation, order tools, operating guidance, and an AI partner assistant."],
+  ["Is the 50% margin guaranteed?", "No. Approved pricing can create approximately 50% gross margin when an item purchased at half of suggested retail is sold at that retail price. Shipping, payment fees, taxes, discounts, returns, and other operating costs reduce actual margin."],
+  ["Can EVLV build a fully custom store?", "Yes, for selected partners with established reach or sales volume. Our in-house team can scope custom design, customer-facing branding, and eligible fulfillment separately from the standard microsite program."],
 ];
 
 export default function PartnerNetworkPage() {
@@ -89,10 +105,10 @@ export default function PartnerNetworkPage() {
                 <span className="rounded-full border border-white/15 bg-white/5 px-3 py-1.5 tracking-[.14em] text-white/65">Application only</span>
               </div>
               <h1 className="max-w-3xl font-display text-[clamp(3.45rem,6vw,6.9rem)] font-semibold leading-[.9] tracking-[-.055em]">
-                Your storefront.<br /><span className="text-[#b6d4ca]">Powered by EVLV.</span>
+                Know the category.<br /><span className="text-[#b6d4ca]">Build with EVLV.</span>
               </h1>
               <p className="mt-8 max-w-2xl text-base leading-8 text-white/68 md:text-lg">
-                Approved partners get the tools to launch a focused research-commerce operation: a permanent microsite, private inventory pricing, order controls, and direct operational support.
+                Start with small-batch wholesale, sell through your own premium microsite, and scale into custom commerce and fulfillment when the operation proves demand.
               </p>
               <div className="mt-10 flex flex-wrap gap-3">
                 <Link href="/#apply" className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-[#e4c18d] px-8 text-[11px] font-bold uppercase tracking-[.15em] text-[#102d28] transition hover:bg-[#efd3a7]">Apply for review <i className="ri-arrow-right-line" /></Link>
@@ -102,7 +118,7 @@ export default function PartnerNetworkPage() {
               <div className="mt-12 grid max-w-2xl gap-3 border-t border-white/12 pt-7 text-xs text-white/65 sm:grid-cols-3">
                 <span className="flex items-center gap-2"><i className="ri-check-line text-[#aed1c6]" /> Reviewed access</span>
                 <span className="flex items-center gap-2"><i className="ri-check-line text-[#aed1c6]" /> Permanent partner URL</span>
-                <span className="flex items-center gap-2"><i className="ri-check-line text-[#aed1c6]" /> Central support</span>
+                <span className="flex items-center gap-2"><i className="ri-check-line text-[#aed1c6]" /> Wholesale partner pricing</span>
               </div>
             </div>
           </div>
@@ -111,9 +127,18 @@ export default function PartnerNetworkPage() {
 
       <section className="mx-auto max-w-[1320px] px-5 pb-8 pt-10 md:px-8 md:pb-16">
         <Reveal className="rounded-[26px] border border-[#d4dfda] bg-white p-7 md:p-12">
-          <div className="flex flex-col justify-between gap-6 border-b border-[#dde5e1] pb-9 md:flex-row md:items-end"><div className="max-w-3xl"><p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#4c766b]">Built for operators</p><h2 className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-[-.04em] md:text-6xl">You bring the relationships. We bring the operating layer.</h2></div><p className="max-w-md text-sm leading-7 text-[#687770]">The strongest applicants already have an audience, community, physical location, or repeatable way to reach qualified research customers.</p></div>
+          <div className="flex flex-col justify-between gap-6 border-b border-[#dde5e1] pb-9 md:flex-row md:items-end"><div className="max-w-3xl"><p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#4c766b]">Built for relationship sellers</p><h2 className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-[-.04em] md:text-6xl">Your first customers probably already know you.</h2></div><p className="max-w-md text-sm leading-7 text-[#687770]">This is designed around personal trust and in-person selling. EVLV provides the system; the reseller provides category fluency, responsiveness, and real relationships.</p></div>
           <div className="grid gap-px overflow-hidden rounded-2xl bg-[#dce4e0] sm:grid-cols-2 lg:grid-cols-4">{partnerProfiles.map(([icon, title, body]) => <article key={title} className="bg-[#f7f8f5] p-6 md:p-7"><i className={`${icon} text-2xl text-[#3e7869]`} /><h3 className="mt-7 font-display text-xl font-semibold">{title}</h3><p className="mt-3 text-xs leading-6 text-[#687770]">{body}</p></article>)}</div>
         </Reveal>
+      </section>
+
+      <section className="bg-[#102d28] py-20 text-white md:py-28">
+        <div className="mx-auto max-w-[1320px] px-5 md:px-8">
+          <Reveal className="grid gap-12 lg:grid-cols-[.72fr_1.28fr] lg:gap-20">
+            <div><p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#9fc9bc]">Relationship-led acquisition</p><h2 className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-[-.04em] md:text-6xl">From category insider to local EVLV reseller.</h2><p className="mt-6 max-w-lg text-sm leading-7 text-white/58">We reach people who are already active in the category and trusted in their circles, then give qualified applicants a practical way to serve local demand.</p><div className="mt-8 rounded-2xl border border-white/12 bg-white/[.05] p-5"><p className="text-xs leading-6 text-white/60"><strong className="text-white">Single level:</strong> resellers earn from customer sales. There are no downlines, recruiting commissions, or rewards for signing up another reseller.</p></div></div>
+            <div className="divide-y divide-white/12 border-y border-white/12">{customerLoop.map(([number, title, body]) => <article key={number} className="grid gap-3 py-6 sm:grid-cols-[48px_1fr]"><span className="font-mono text-xs font-semibold text-[#9fc9bc]">{number}</span><div><h3 className="font-display text-xl font-semibold">{title}</h3><p className="mt-2 text-sm leading-6 text-white/52">{body}</p></div></article>)}</div>
+          </Reveal>
+        </div>
       </section>
 
       <section id="model" className="mx-auto max-w-[1320px] px-5 py-20 md:px-8 md:py-28">
@@ -129,9 +154,19 @@ export default function PartnerNetworkPage() {
         </Reveal>
       </section>
 
+      <section className="bg-[#f8f8f4] py-20 md:py-28">
+        <div className="mx-auto max-w-[1320px] px-5 md:px-8">
+          <Reveal className="grid gap-10 lg:grid-cols-[.7fr_1.3fr] lg:gap-20">
+            <div><p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#4c766b]">Built to graduate with you</p><h2 className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-[-.04em] md:text-6xl">Test the market. Build the operation. Earn the custom layer.</h2><p className="mt-6 text-sm leading-7 text-[#61706b]">The core program is intentionally accessible to serious small-volume partners. Bigger audiences and proven operators can graduate into a more deeply branded solution.</p></div>
+            <div className="divide-y divide-[#d7e0dc] border-y border-[#d7e0dc]">{partnerStages.map((stage) => <article key={stage.number} className="grid gap-4 py-7 sm:grid-cols-[64px_1fr]"><span className="font-mono text-xs font-semibold text-[#4c766b]">{stage.number}</span><div><p className="text-[9px] font-bold uppercase tracking-[.18em] text-[#8a6a43]">{stage.label}</p><h3 className="mt-2 font-display text-2xl font-semibold">{stage.title}</h3><p className="mt-3 max-w-2xl text-sm leading-7 text-[#687770]">{stage.body}</p></div></article>)}</div>
+          </Reveal>
+          <Reveal className="mt-10 grid gap-5 rounded-[24px] bg-[#102d28] p-7 text-white md:grid-cols-[1fr_auto] md:items-center md:p-10"><div><p className="text-[10px] font-bold uppercase tracking-[.2em] text-[#9fc9bc]">Wholesale economics</p><h3 className="mt-3 font-display text-3xl font-semibold">Partner pricing designed for approximately 50% gross margin.</h3><p className="mt-3 max-w-3xl text-xs leading-6 text-white/55">Example: an approved item acquired for $50 and sold at a $100 public price creates $50 gross margin before shipping, processing fees, discounts, tax, returns, and other operating costs. Actual results vary.</p></div><Link href="/#apply" className="inline-flex min-h-13 items-center justify-center rounded-lg bg-[#e4c18d] px-7 text-[10px] font-bold uppercase tracking-[.15em] text-[#102d28]">Request wholesale access</Link></Reveal>
+        </div>
+      </section>
+
       <section className="bg-[#e7ebe7] py-20 md:py-28">
         <div className="mx-auto max-w-[1320px] px-5 md:px-8">
-          <Reveal className="grid gap-10 lg:grid-cols-[.7fr_1.3fr] lg:gap-20"><div><p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#4c766b]">Choose your starting path</p><h2 className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-[-.04em] md:text-6xl">Start manageable. Build deliberately.</h2><p className="mt-6 text-sm leading-7 text-[#61706b]">Starter inventory is reviewed around the partner—not sold as a universal shortcut. The right mix depends on audience, experience, and operational readiness.</p></div><div className="grid gap-4 md:grid-cols-3">{starterPaths.map((path, index) => <article key={path.title} className={`${index === 1 ? "bg-[#102d28] text-white" : "bg-white"} rounded-2xl border border-[#d5dfda] p-6`}><p className={`text-[9px] font-bold uppercase tracking-[.17em] ${index === 1 ? "text-[#9fc9bc]" : "text-[#4c766b]"}`}>{path.label}</p><h3 className="mt-5 font-display text-2xl font-semibold">{path.title}</h3><p className={`mt-4 text-xs leading-6 ${index === 1 ? "text-white/60" : "text-[#687770]"}`}>{path.body}</p><p className={`mt-8 border-t pt-4 text-[9px] font-bold uppercase tracking-[.11em] ${index === 1 ? "border-white/12 text-[#b9d9ce]" : "border-[#dde5e1] text-[#567d72]"}`}>{path.detail}</p></article>)}</div></Reveal>
+          <Reveal className="grid gap-10 lg:grid-cols-[.7fr_1.3fr] lg:gap-20"><div><p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#4c766b]">Your first local batch</p><h2 className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-[-.04em] md:text-6xl">Start manageable. Sell through. Replenish.</h2><p className="mt-6 text-sm leading-7 text-[#61706b]">Starter inventory follows actual customer demand—not a qualification purchase. Begin with what you can responsibly sell, learn the local market, and reorder from real movement.</p></div><div className="grid gap-4 md:grid-cols-3">{starterPaths.map((path, index) => <article key={path.title} className={`${index === 1 ? "bg-[#102d28] text-white" : "bg-white"} rounded-2xl border border-[#d5dfda] p-6`}><p className={`text-[9px] font-bold uppercase tracking-[.17em] ${index === 1 ? "text-[#9fc9bc]" : "text-[#4c766b]"}`}>{path.label}</p><h3 className="mt-5 font-display text-2xl font-semibold">{path.title}</h3><p className={`mt-4 text-xs leading-6 ${index === 1 ? "text-white/60" : "text-[#687770]"}`}>{path.body}</p><p className={`mt-8 border-t pt-4 text-[9px] font-bold uppercase tracking-[.11em] ${index === 1 ? "border-white/12 text-[#b9d9ce]" : "border-[#dde5e1] text-[#567d72]"}`}>{path.detail}</p></article>)}</div></Reveal>
         </div>
       </section>
 
@@ -167,7 +202,7 @@ export default function PartnerNetworkPage() {
 
       <section id="apply" className="px-3 pb-6 md:px-6">
         <div className="mx-auto grid max-w-[1450px] gap-10 overflow-hidden rounded-[28px] bg-[#082b28] px-6 py-14 text-white md:px-12 md:py-20 lg:grid-cols-[.8fr_1.2fr] lg:gap-20 lg:px-20">
-          <div><p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#9fc9bc]">Private application</p><h2 className="mt-5 font-display text-4xl font-semibold leading-[1] tracking-[-.045em] md:text-6xl">Show us what you can build.</h2><p className="mt-6 max-w-xl text-sm leading-7 text-white/60">Tell us about your audience, operation, and plan. Strong applications are reviewed for fit, readiness, and responsible positioning.</p><div className="mt-8 space-y-3 text-xs text-white/60"><p><i className="ri-check-line mr-2 text-[#9fc9bc]" />No application fee</p><p><i className="ri-check-line mr-2 text-[#9fc9bc]" />Private review</p><p><i className="ri-check-line mr-2 text-[#9fc9bc]" />No income guarantees or recruiting chain</p></div></div>
+          <div><p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#9fc9bc]">Private application</p><h2 className="mt-5 font-display text-4xl font-semibold leading-[1] tracking-[-.045em] md:text-6xl">Already active in the space? Start here.</h2><p className="mt-6 max-w-xl text-sm leading-7 text-white/60">Tell us what you understand about the category, who already trusts you, and how you would sell locally. Relationship-first applicants receive priority review.</p><div className="mt-8 space-y-3 text-xs text-white/60"><p><i className="ri-check-line mr-2 text-[#9fc9bc]" />Category knowledge valued</p><p><i className="ri-check-line mr-2 text-[#9fc9bc]" />Local and in-person selling welcomed</p><p><i className="ri-check-line mr-2 text-[#9fc9bc]" />No income guarantees or recruiting chain</p></div></div>
           <ApplyPreview />
         </div>
       </section>

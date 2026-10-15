@@ -15,9 +15,9 @@ export function ApplyPreview() {
   return <form onSubmit={submit} className="grid gap-4 sm:grid-cols-2">
     <Field label="Full name" placeholder="Your name" required />
     <Field label="Email" placeholder="you@business.com" type="email" required />
-    <Field label="Business or social name" placeholder="Brand, gym, studio, or creator name" />
-    <Field label="Primary audience" placeholder="Researchers, local network, social audience…" />
-    <label className="sm:col-span-2"><Label>Why are you a strong fit?</Label><textarea required rows={5} placeholder="Tell us about your audience, current operation, and how you plan to build responsibly." className="mt-2 w-full rounded-xl border border-white/15 bg-white/[.07] px-4 py-3 text-sm leading-6 text-white outline-none placeholder:text-white/35 focus:border-[#9fc9bc]" /></label>
+    <Field label="Business, gym, or social name" placeholder="Your current public or local identity" />
+    <Field label="People you already reach" placeholder="Local network, gym community, social circle…" />
+    <label className="sm:col-span-2"><Label>What do you already know about this category?</Label><textarea required rows={5} placeholder="Tell us about your category experience, the customers who trust you, and how you would sell responsibly in person." className="mt-2 w-full rounded-xl border border-white/15 bg-white/[.07] px-4 py-3 text-sm leading-6 text-white outline-none placeholder:text-white/35 focus:border-[#9fc9bc]" /></label>
     <label className="sm:col-span-2 flex items-start gap-3 rounded-xl border border-white/10 bg-white/[.04] p-4 text-xs leading-6 text-white/60"><input required type="checkbox" className="mt-1 accent-[#9fc9bc]" />I understand access is reviewed, products are research-use-only, and the program does not guarantee income.</label>
     <button className="min-h-14 rounded-lg bg-[#e5c494] px-7 text-[10px] font-bold uppercase tracking-[.14em] text-[#102d28] sm:col-span-2">Request private review</button>
     <p className="text-center text-[10px] leading-5 text-white/40 sm:col-span-2">Preview mode: this form does not transmit information yet.</p>
