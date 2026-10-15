@@ -18,7 +18,7 @@ export function SiteChrome({ children }: { children: ReactNode }) {
       <div className="mx-auto flex h-[82px] max-w-[1500px] items-center justify-between px-5 md:px-8">
         <Logo imageClassName="h-8 w-auto md:h-9" />
         <nav className="hidden items-center gap-7 text-[9px] font-bold uppercase tracking-[.13em] text-[#52645f] lg:flex"><Link href="/#how">How it works</Link><Link href="/#templates">Storefronts</Link><Link href="/dashboard">Dashboard</Link><a href="https://www.evlvpeptides.com/ambassadors" target="_blank" rel="noreferrer">Affiliates ↗</a></nav>
-        <div className="flex items-center gap-2"><a href="https://www.evlvpeptides.com" target="_blank" rel="noreferrer" className="hidden rounded-full border border-[#cbd7d2] px-5 py-3 text-[8px] font-bold uppercase tracking-[.13em] text-[#52645f] sm:inline-flex">Main EVLV site ↗</a><Link href="/#apply" className="rounded-full bg-[#102d28] px-5 py-3 text-[9px] font-bold uppercase tracking-[.12em] text-white">Apply now</Link></div>
+        <div className="flex items-center gap-2"><Link href="/dashboard" className="inline-flex items-center rounded-full border border-[#cbd7d2] px-4 py-3 text-[8px] font-bold uppercase tracking-[.12em] text-[#52645f] sm:px-5"><i className="ri-user-3-line mr-1.5 text-xs" />Login</Link><a href="https://www.evlvpeptides.com" target="_blank" rel="noreferrer" className="hidden rounded-full border border-[#cbd7d2] px-5 py-3 text-[8px] font-bold uppercase tracking-[.13em] text-[#52645f] xl:inline-flex">Main EVLV site ↗</a><Link href="/#apply" className="rounded-full bg-[#102d28] px-4 py-3 text-[9px] font-bold uppercase tracking-[.12em] text-white sm:px-5">Apply</Link></div>
       </div>
     </header>
     <main>{children}</main>
