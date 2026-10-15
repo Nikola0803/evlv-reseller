@@ -6,216 +6,83 @@ import { ApplyPreview } from "@/components/ApplyPreview";
 
 export const metadata: Metadata = {
   title: "EVLV Partner Network",
-  description: "A private EVLV-powered commerce platform for approved research-product partners.",
+  description: "Small-batch wholesale, premium microsites, and operating tools for approved independent research-commerce partners.",
   robots: { index: false, follow: false },
 };
 
-const operatingTools = [
-  { icon: "ri-layout-4-line", title: "Your microsite", body: "Launch from a polished template at a permanent partner URL built for social traffic." },
-  { icon: "ri-box-3-line", title: "Your inventory", body: "Purchase approved starter batches, monitor available units, and reorder from one dashboard." },
-  { icon: "ri-shopping-bag-3-line", title: "Your orders", body: "See new orders, confirm payment, manage fulfillment, and provide tracking without spreadsheets." },
-  { icon: "ri-sparkling-2-line", title: "Your AI copilot", body: "Get direct help with setup, operations, approved content, documentation, and customer support." },
-];
-
 const templates = [
-  {
-    key: "creator",
-    number: "01",
-    name: "Signature",
-    eyebrow: "Personal brand storefront",
-    body: "A high-touch editorial shop for creators and relationship sellers who are the face of their business.",
-    image: "/images/ambassadors/hero-creator.webp",
-    color: "#c8a578",
-  },
-  {
-    key: "studio",
-    number: "02",
-    name: "Lab Ledger",
-    eyebrow: "Documentation-led storefront",
-    body: "A precise technical shop for operators who lead with batch records, catalogue clarity, and trust.",
-    image: "/images/wholesale/evlv-white-label-dropship.png",
-    color: "#83aa9f",
-  },
-  {
-    key: "catalogue",
-    number: "03",
-    name: "Market",
-    eyebrow: "Fast commerce storefront",
-    body: "A polished product-first shop for returning buyers, social traffic, and quick mobile ordering.",
-    image: "/images/certified/evlv-hero-multi-vials.png",
-    color: "#e4c48e",
-  },
-];
-
-const steps = [
-  ["01", "Apply or receive an invitation", "Every partner is reviewed before access is activated."],
-  ["02", "Build your operating profile", "Reserve your URL, select a template, configure your catalog, and add approved payment details."],
-  ["03", "Purchase a starter batch", "Your approved products and quantities become live partner inventory after fulfillment."],
-  ["04", "Launch and operate", "Share one permanent link, receive orders, confirm payments, fulfill, and replenish."],
-];
-
-const partnerProfiles = [
-  ["ri-flask-line", "Category insiders", "People already familiar with research compounds, documentation, ordering expectations, and the questions customers ask."],
-  ["ri-hand-heart-line", "Trusted local connectors", "People whose friends, colleagues, or community already come to them for informed product recommendations."],
-  ["ri-building-2-line", "Gyms & community spaces", "Operators positioned to serve qualified local research demand through a controlled catalogue and clear process."],
-  ["ri-store-2-line", "First-time resellers", "People ready to turn category knowledge into a small, structured operation with EVLV infrastructure behind them."],
-];
-
-const customerLoop = [
-  ["01", "Already know the category", "Strong candidates are already part of the conversation and understand what local research customers look for."],
-  ["02", "Discover the opportunity through trust", "They hear about EVLV through a partner, community, gym, event, private outreach, or someone already in their network."],
-  ["03", "Apply directly to EVLV", "Every reseller is independently reviewed. Nobody earns money merely for recruiting another reseller."],
-  ["04", "Start with a controlled batch", "Approved partners select manageable inventory based on real demand—not a forced buy-in or oversized package."],
-  ["05", "Sell locally and replenish", "Partners serve customers in person and through their microsite, then reorder based on verified sales."],
-];
-
-const starterPaths = [
-  { label: "Focused", title: "Start with one lane", body: "A concentrated selection for partners who know exactly what their audience requests.", detail: "Lowest operational complexity" },
-  { label: "Balanced", title: "Build a core catalogue", body: "A selected starter mix designed to support broader customer demand and repeat ordering.", detail: "Best for active communities" },
-  { label: "Custom", title: "Plan with EVLV", body: "A reviewed inventory plan for established operators with a defined customer base and sales process.", detail: "Approval and volume dependent" },
-];
-
-const partnerStages = [
-  { number: "01", label: "Test", title: "Small-batch wholesale", body: "Begin with a controlled product mix and wholesale access designed to validate real demand without overcommitting to inventory." },
-  { number: "02", label: "Operate", title: "Your EVLV-powered microsite", body: "Choose a premium storefront, set your public pricing and payment methods, then manage orders and stock from one operating dashboard." },
-  { number: "03", label: "Scale", title: "Custom brand + fulfillment", body: "Qualified higher-volume partners can work with our in-house team on a custom storefront and approved fulfillment under their own customer-facing brand." },
+  { key: "creator", number: "01", name: "Signature", fit: "For creators and relationship sellers", image: "/images/ambassadors/hero-creator.webp" },
+  { key: "studio", number: "02", name: "Lab Ledger", fit: "For documentation-led operators", image: "/images/wholesale/evlv-white-label-dropship.png" },
+  { key: "catalogue", number: "03", name: "Market", fit: "For fast mobile commerce", image: "/images/certified/evlv-hero-multi-vials.png" },
 ];
 
 const faqs = [
-  ["Is this an affiliate program?", "No. This concept is built around approved partners operating real inventory and their own customer-order workflow—not a recruiting chain."],
-  ["Do you guarantee income?", "No. Outcomes depend on audience, effort, operating costs, pricing, and execution. EVLV does not publish or promise earnings."],
-  ["Can anyone join?", "No. Each application is reviewed for fit, responsible positioning, business readiness, and ability to follow research-use-only requirements."],
-  ["What does EVLV provide?", "Wholesale access, premium microsite infrastructure, documentation, order tools, operating guidance, and an AI partner assistant."],
-  ["Is the 50% margin guaranteed?", "No. Approved pricing can create approximately 50% gross margin when an item purchased at half of suggested retail is sold at that retail price. Shipping, payment fees, taxes, discounts, returns, and other operating costs reduce actual margin."],
-  ["Can EVLV build a fully custom store?", "Yes, for selected partners with established reach or sales volume. Our in-house team can scope custom design, customer-facing branding, and eligible fulfillment separately from the standard microsite program."],
+  ["Is this an affiliate program?", "No. Approved partners purchase real inventory at partner pricing and operate their own customer-order workflow. There are no downlines or recruiting commissions."],
+  ["Is the 50% margin guaranteed?", "No. It is a gross-margin example. An item acquired for $50 and sold for $100 creates $50 gross margin before shipping, processing fees, taxes, discounts, returns, and operating costs."],
+  ["Can EVLV build a fully custom store?", "Yes, for selected partners with established reach or sales volume. Custom design, customer-facing branding, and eligible fulfillment are scoped separately."],
+  ["Can anyone join?", "No. Every application is reviewed for category familiarity, audience fit, operating readiness, and ability to follow research-use-only requirements."],
 ];
 
 export default function PartnerNetworkPage() {
-  return (
-    <div className="overflow-hidden bg-[#f2f3ef] text-[#102d28]">
-      <section className="px-3 pb-12 pt-5 md:px-6 md:pb-20 md:pt-7">
-        <div className="relative mx-auto min-h-[720px] max-w-[1450px] overflow-hidden rounded-[28px] bg-[#082b28] text-white shadow-[0_30px_90px_rgba(4,35,32,.22)]">
-          <Image src="/images/wholesale/evlv-b2b-fulfillment.png" alt="EVLV partner commerce operation" fill priority sizes="(max-width: 768px) 100vw, 1450px" className="object-cover object-[67%_center] opacity-80" />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,38,35,.99)_0%,rgba(5,38,35,.96)_38%,rgba(5,38,35,.64)_62%,rgba(5,38,35,.14)_100%)]" />
-          <div className="absolute inset-x-0 bottom-0 h-52 bg-gradient-to-t from-[#082b28] via-[#082b28]/65 to-transparent lg:hidden" />
-          <div className="relative z-10 flex min-h-[720px] items-center px-6 py-16 sm:px-10 md:px-16 lg:px-20">
-            <div className="max-w-[710px]">
-              <div className="mb-8 flex flex-wrap items-center gap-3 text-[10px] font-bold uppercase tracking-[.24em] text-[#aed1c6]">
-                <span className="h-px w-9 bg-[#aed1c6]/60" /> EVLV Partner Network
-                <span className="rounded-full border border-white/15 bg-white/5 px-3 py-1.5 tracking-[.14em] text-white/65">Application only</span>
-              </div>
-              <h1 className="max-w-3xl font-display text-[clamp(3.45rem,6vw,6.9rem)] font-semibold leading-[.9] tracking-[-.055em]">
-                Know the category.<br /><span className="text-[#b6d4ca]">Build with EVLV.</span>
-              </h1>
-              <p className="mt-8 max-w-2xl text-base leading-8 text-white/68 md:text-lg">
-                Start with small-batch wholesale, sell through your own premium microsite, and scale into custom commerce and fulfillment when the operation proves demand.
-              </p>
-              <div className="mt-10 flex flex-wrap gap-3">
-                <Link href="/#apply" className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-[#e4c18d] px-8 text-[11px] font-bold uppercase tracking-[.15em] text-[#102d28] transition hover:bg-[#efd3a7]">Apply for review <i className="ri-arrow-right-line" /></Link>
-                <a href="#templates" className="inline-flex min-h-14 items-center justify-center rounded-lg border border-white/25 bg-white/[.04] px-8 text-[11px] font-bold uppercase tracking-[.15em] text-white transition hover:bg-white/10">Explore the platform</a>
-                <Link href="/dashboard" className="inline-flex min-h-14 items-center justify-center rounded-lg border border-white/15 px-6 text-[10px] font-bold uppercase tracking-[.14em] text-white/70 transition hover:bg-white/10">Dashboard preview</Link>
-              </div>
-              <div className="mt-12 grid max-w-2xl gap-3 border-t border-white/12 pt-7 text-xs text-white/65 sm:grid-cols-3">
-                <span className="flex items-center gap-2"><i className="ri-check-line text-[#aed1c6]" /> Reviewed access</span>
-                <span className="flex items-center gap-2"><i className="ri-check-line text-[#aed1c6]" /> Permanent partner URL</span>
-                <span className="flex items-center gap-2"><i className="ri-check-line text-[#aed1c6]" /> Wholesale partner pricing</span>
-              </div>
-            </div>
+  return <div className="overflow-hidden bg-[#f4f4ef] text-[#102d28]">
+    <section className="px-3 pb-10 pt-4 md:px-6 md:pb-16 md:pt-6">
+      <div className="relative mx-auto min-h-[760px] max-w-[1500px] overflow-hidden rounded-[28px] bg-[#082b28] text-white shadow-[0_30px_90px_rgba(4,35,32,.2)]">
+        <Image src="/images/wholesale/evlv-b2b-fulfillment.png" alt="EVLV wholesale and partner fulfillment operation" fill priority sizes="100vw" className="object-cover object-[68%_center] opacity-80" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,38,35,.99)_0%,rgba(5,38,35,.95)_39%,rgba(5,38,35,.58)_66%,rgba(5,38,35,.12)_100%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-[#082b28] via-[#082b28]/70 to-transparent lg:hidden" />
+        <div className="relative z-10 flex min-h-[760px] items-center px-6 py-16 sm:px-10 md:px-16 lg:px-20">
+          <div className="max-w-[730px]">
+            <p className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[.24em] text-[#acd0c5]"><span className="h-px w-10 bg-[#acd0c5]/70" />Application-only wholesale network</p>
+            <h1 className="mt-8 font-display text-[clamp(3.65rem,6.5vw,7.4rem)] font-semibold leading-[.86] tracking-[-.06em]">Your audience.<br /><span className="text-[#b6d4ca]">Your storefront.</span><br />Our system.</h1>
+            <p className="mt-8 max-w-2xl text-base leading-8 text-white/70 md:text-lg">Test demand with small-batch wholesale, sell through a premium microsite, and build a real operation without starting from zero.</p>
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row"><Link href="/#apply" className="inline-flex min-h-14 items-center justify-center rounded-lg bg-[#e5c494] px-9 text-[11px] font-bold uppercase tracking-[.15em] text-[#102d28] transition hover:bg-[#f0d5aa]">Apply for partner pricing <i className="ri-arrow-right-line ml-2" /></Link><a href="#how" className="inline-flex min-h-14 items-center justify-center rounded-lg border border-white/25 bg-white/[.04] px-8 text-[11px] font-bold uppercase tracking-[.15em] text-white transition hover:bg-white/10">See how it works</a></div>
+            <div className="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-white/15 pt-7 text-[11px] text-white/58"><span><i className="ri-check-line mr-2 text-[#9fc9bc]" />Small starting batches</span><span><i className="ri-check-line mr-2 text-[#9fc9bc]" />Permanent microsite</span><span><i className="ri-check-line mr-2 text-[#9fc9bc]" />No downlines</span></div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section className="mx-auto max-w-[1320px] px-5 pb-8 pt-10 md:px-8 md:pb-16">
-        <Reveal className="rounded-[26px] border border-[#d4dfda] bg-white p-7 md:p-12">
-          <div className="flex flex-col justify-between gap-6 border-b border-[#dde5e1] pb-9 md:flex-row md:items-end"><div className="max-w-3xl"><p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#4c766b]">Built for relationship sellers</p><h2 className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-[-.04em] md:text-6xl">Your first customers probably already know you.</h2></div><p className="max-w-md text-sm leading-7 text-[#687770]">This is designed around personal trust and in-person selling. EVLV provides the system; the reseller provides category fluency, responsiveness, and real relationships.</p></div>
-          <div className="grid gap-px overflow-hidden rounded-2xl bg-[#dce4e0] sm:grid-cols-2 lg:grid-cols-4">{partnerProfiles.map(([icon, title, body]) => <article key={title} className="bg-[#f7f8f5] p-6 md:p-7"><i className={`${icon} text-2xl text-[#3e7869]`} /><h3 className="mt-7 font-display text-xl font-semibold">{title}</h3><p className="mt-3 text-xs leading-6 text-[#687770]">{body}</p></article>)}</div>
-        </Reveal>
-      </section>
+    <section className="border-y border-[#d9e1dd] bg-white py-6"><div className="mx-auto flex max-w-[1320px] flex-wrap justify-center gap-x-12 gap-y-4 px-5 text-[9px] font-bold uppercase tracking-[.17em] text-[#55736b] md:justify-between"><span>Private wholesale access</span><span>EVLV-powered commerce</span><span>Partner-controlled pricing</span><span>U.S. operating support</span></div></section>
 
-      <section className="bg-[#102d28] py-20 text-white md:py-28">
-        <div className="mx-auto max-w-[1320px] px-5 md:px-8">
-          <Reveal className="grid gap-12 lg:grid-cols-[.72fr_1.28fr] lg:gap-20">
-            <div><p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#9fc9bc]">Relationship-led acquisition</p><h2 className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-[-.04em] md:text-6xl">From category insider to local EVLV reseller.</h2><p className="mt-6 max-w-lg text-sm leading-7 text-white/58">We reach people who are already active in the category and trusted in their circles, then give qualified applicants a practical way to serve local demand.</p><div className="mt-8 rounded-2xl border border-white/12 bg-white/[.05] p-5"><p className="text-xs leading-6 text-white/60"><strong className="text-white">Single level:</strong> resellers earn from customer sales. There are no downlines, recruiting commissions, or rewards for signing up another reseller.</p></div></div>
-            <div className="divide-y divide-white/12 border-y border-white/12">{customerLoop.map(([number, title, body]) => <article key={number} className="grid gap-3 py-6 sm:grid-cols-[48px_1fr]"><span className="font-mono text-xs font-semibold text-[#9fc9bc]">{number}</span><div><h3 className="font-display text-xl font-semibold">{title}</h3><p className="mt-2 text-sm leading-6 text-white/52">{body}</p></div></article>)}</div>
-          </Reveal>
-        </div>
-      </section>
+    <section className="mx-auto max-w-[1320px] px-5 py-24 md:px-8 md:py-36">
+      <Reveal className="grid gap-14 lg:grid-cols-[.82fr_1.18fr] lg:gap-24">
+        <div><p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#4c766b]">The partnership</p><h2 className="mt-6 font-display text-5xl font-semibold leading-[.96] tracking-[-.05em] md:text-7xl">You bring the trust.<br /><span className="text-[#71978c]">We bring the operation.</span></h2></div>
+        <div className="flex flex-col justify-center"><p className="max-w-2xl text-xl leading-9 text-[#4e625c]">EVLV Partners is for people who already understand the category and have relationships they can serve—locally, socially, or both.</p><div className="mt-10 space-y-7 border-t border-[#d8e0dc] pt-8"><ValueLine number="01" title="Buy small, not blind" body="Start with a controlled wholesale batch aligned to real demand." /><ValueLine number="02" title="Look established on day one" body="Launch a premium storefront at your permanent partner URL." /><ValueLine number="03" title="Operate in one place" body="Manage inventory, orders, payments, support, and replenishment from your dashboard." /></div></div>
+      </Reveal>
+    </section>
 
-      <section id="model" className="mx-auto max-w-[1320px] px-5 py-20 md:px-8 md:py-28">
-        <Reveal className="grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
-          <div>
-            <p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#4c766b]">One operating system</p>
-            <h2 className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-[-.04em] md:text-6xl">Everything between approval and reorder.</h2>
-            <p className="mt-6 max-w-lg text-sm leading-7 text-[#61706b] md:text-base">The platform handles the operational layer so partners can focus on building credible relationships and serving their customers responsibly.</p>
-          </div>
-          <div className="grid gap-px overflow-hidden rounded-2xl border border-[#d5dfda] bg-[#d5dfda] sm:grid-cols-2">
-            {operatingTools.map((tool) => <article key={tool.title} className="bg-white p-7 md:p-9"><i className={`${tool.icon} text-2xl text-[#3e7869]`} /><h3 className="mt-8 font-display text-2xl font-semibold">{tool.title}</h3><p className="mt-3 text-sm leading-6 text-[#687770]">{tool.body}</p></article>)}
-          </div>
-        </Reveal>
-      </section>
+    <section className="bg-[#0b302c] py-24 text-white md:py-32">
+      <div className="mx-auto grid max-w-[1320px] gap-12 px-5 md:px-8 lg:grid-cols-[.9fr_1.1fr] lg:items-center lg:gap-24">
+        <Reveal><p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#9fc9bc]">The room to build</p><div className="mt-6 font-display text-[clamp(7rem,15vw,13rem)] font-semibold leading-[.75] tracking-[-.08em] text-[#e5c494]">50<span className="text-[.32em] tracking-[-.03em]">%</span></div><p className="mt-7 text-xs leading-6 text-white/45">Illustrative gross margin at suggested retail—not guaranteed earnings.</p></Reveal>
+        <Reveal><h2 className="font-display text-4xl font-semibold leading-[1.02] tracking-[-.045em] md:text-6xl">Partner pricing designed to leave real margin.</h2><p className="mt-7 max-w-xl text-base leading-8 text-white/62">If an approved item is acquired for $50 and sold for $100, the $50 difference is gross margin before shipping, processing fees, tax, discounts, returns, and other operating costs.</p><div className="mt-9 flex flex-wrap gap-3"><Link href="/#apply" className="inline-flex min-h-14 items-center rounded-lg bg-[#e5c494] px-8 text-[10px] font-bold uppercase tracking-[.15em] text-[#102d28]">Request wholesale access</Link><span className="inline-flex min-h-14 items-center border-l border-white/15 pl-6 text-xs text-white/50">You decide what to stock.<br />You decide what to charge.</span></div></Reveal>
+      </div>
+    </section>
 
-      <section className="bg-[#f8f8f4] py-20 md:py-28">
-        <div className="mx-auto max-w-[1320px] px-5 md:px-8">
-          <Reveal className="grid gap-10 lg:grid-cols-[.7fr_1.3fr] lg:gap-20">
-            <div><p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#4c766b]">Built to graduate with you</p><h2 className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-[-.04em] md:text-6xl">Test the market. Build the operation. Earn the custom layer.</h2><p className="mt-6 text-sm leading-7 text-[#61706b]">The core program is intentionally accessible to serious small-volume partners. Bigger audiences and proven operators can graduate into a more deeply branded solution.</p></div>
-            <div className="divide-y divide-[#d7e0dc] border-y border-[#d7e0dc]">{partnerStages.map((stage) => <article key={stage.number} className="grid gap-4 py-7 sm:grid-cols-[64px_1fr]"><span className="font-mono text-xs font-semibold text-[#4c766b]">{stage.number}</span><div><p className="text-[9px] font-bold uppercase tracking-[.18em] text-[#8a6a43]">{stage.label}</p><h3 className="mt-2 font-display text-2xl font-semibold">{stage.title}</h3><p className="mt-3 max-w-2xl text-sm leading-7 text-[#687770]">{stage.body}</p></div></article>)}</div>
-          </Reveal>
-          <Reveal className="mt-10 grid gap-5 rounded-[24px] bg-[#102d28] p-7 text-white md:grid-cols-[1fr_auto] md:items-center md:p-10"><div><p className="text-[10px] font-bold uppercase tracking-[.2em] text-[#9fc9bc]">Wholesale economics</p><h3 className="mt-3 font-display text-3xl font-semibold">Partner pricing designed for approximately 50% gross margin.</h3><p className="mt-3 max-w-3xl text-xs leading-6 text-white/55">Example: an approved item acquired for $50 and sold at a $100 public price creates $50 gross margin before shipping, processing fees, discounts, tax, returns, and other operating costs. Actual results vary.</p></div><Link href="/#apply" className="inline-flex min-h-13 items-center justify-center rounded-lg bg-[#e4c18d] px-7 text-[10px] font-bold uppercase tracking-[.15em] text-[#102d28]">Request wholesale access</Link></Reveal>
-        </div>
-      </section>
+    <section id="how" className="mx-auto max-w-[1320px] px-5 py-24 md:px-8 md:py-36">
+      <Reveal className="max-w-4xl"><p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#4c766b]">From interest to open</p><h2 className="mt-6 font-display text-5xl font-semibold leading-[.98] tracking-[-.05em] md:text-7xl">A simple way to test whether this can become something bigger.</h2></Reveal>
+      <div className="mt-16 border-y border-[#d7dfdb]">
+        <FunnelStep number="01" label="Apply" title="Tell us who you reach" body="We review category familiarity, audience fit, and how you plan to sell." />
+        <FunnelStep number="02" label="Launch" title="Choose stock and storefront" body="Select a manageable batch, reserve your URL, and configure your shop." />
+        <FunnelStep number="03" label="Prove" title="Sell, learn, replenish" body="Serve your customers, see what moves, and reorder from actual demand." />
+      </div>
+    </section>
 
-      <section className="bg-[#e7ebe7] py-20 md:py-28">
-        <div className="mx-auto max-w-[1320px] px-5 md:px-8">
-          <Reveal className="grid gap-10 lg:grid-cols-[.7fr_1.3fr] lg:gap-20"><div><p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#4c766b]">Your first local batch</p><h2 className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-[-.04em] md:text-6xl">Start manageable. Sell through. Replenish.</h2><p className="mt-6 text-sm leading-7 text-[#61706b]">Starter inventory follows actual customer demand—not a qualification purchase. Begin with what you can responsibly sell, learn the local market, and reorder from real movement.</p></div><div className="grid gap-4 md:grid-cols-3">{starterPaths.map((path, index) => <article key={path.title} className={`${index === 1 ? "bg-[#102d28] text-white" : "bg-white"} rounded-2xl border border-[#d5dfda] p-6`}><p className={`text-[9px] font-bold uppercase tracking-[.17em] ${index === 1 ? "text-[#9fc9bc]" : "text-[#4c766b]"}`}>{path.label}</p><h3 className="mt-5 font-display text-2xl font-semibold">{path.title}</h3><p className={`mt-4 text-xs leading-6 ${index === 1 ? "text-white/60" : "text-[#687770]"}`}>{path.body}</p><p className={`mt-8 border-t pt-4 text-[9px] font-bold uppercase tracking-[.11em] ${index === 1 ? "border-white/12 text-[#b9d9ce]" : "border-[#dde5e1] text-[#567d72]"}`}>{path.detail}</p></article>)}</div></Reveal>
-        </div>
-      </section>
+    <section id="templates" className="bg-[#e7ebe7] py-24 md:py-32">
+      <div className="mx-auto max-w-[1400px] px-5 md:px-8">
+        <Reveal className="flex flex-col justify-between gap-7 md:flex-row md:items-end"><div><p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#4c766b]">Your storefront</p><h2 className="mt-5 font-display text-5xl font-semibold tracking-[-.05em] md:text-7xl">Pick a starting point.<br />Make it yours.</h2></div><p className="max-w-md text-sm leading-7 text-[#62716c]">Every concept shares the same inventory, order, documentation, and support backbone.</p></Reveal>
+        <div className="mt-14 grid gap-7 lg:grid-cols-3">{templates.map((template) => <Reveal key={template.key} className="group"><Link href={`/templates/${template.key}`} className="block"><div className="relative aspect-[4/4.35] overflow-hidden rounded-[24px] bg-[#123832]"><Image src={template.image} alt={`${template.name} storefront preview`} fill sizes="(max-width:1024px) 100vw, 450px" className="object-cover transition duration-700 group-hover:scale-[1.035]" /><div className="absolute inset-0 bg-gradient-to-t from-[#082b28]/95 via-[#082b28]/5 to-transparent" /><span className="absolute left-5 top-5 rounded-full border border-white/25 bg-[#082b28]/50 px-3 py-2 text-[8px] font-bold uppercase tracking-[.15em] text-white backdrop-blur">Concept {template.number}</span><div className="absolute inset-x-0 bottom-0 p-7 text-white"><p className="text-[9px] font-bold uppercase tracking-[.16em] text-[#b8d8cf]">{template.fit}</p><div className="mt-2 flex items-end justify-between"><h3 className="font-display text-4xl font-semibold">{template.name}</h3><span className="grid h-11 w-11 place-items-center rounded-full border border-white/30 transition group-hover:bg-white group-hover:text-[#102d28]"><i className="ri-arrow-right-up-line" /></span></div></div></div></Link></Reveal>)}</div>
+      </div>
+    </section>
 
-      <section id="templates" className="bg-[#0a302c] py-20 text-white md:py-28">
-        <div className="mx-auto max-w-[1380px] px-5 md:px-8">
-          <Reveal className="flex flex-col justify-between gap-7 md:flex-row md:items-end">
-            <div className="max-w-3xl"><p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#9bc6ba]">Launch architecture</p><h2 className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-[-.04em] md:text-6xl">Three starting points.<br />One powerful backbone.</h2></div>
-            <p className="max-w-md text-sm leading-7 text-white/55">Every template includes the same catalog, inventory, ordering, documentation, and partner support infrastructure.</p>
-          </Reveal>
-          <div className="mt-14 grid gap-6 lg:grid-cols-3">
-            {templates.map((template) => (
-              <Reveal key={template.key} className="group overflow-hidden rounded-2xl border border-white/12 bg-white/[.035]">
-                <div className="relative aspect-[4/3] overflow-hidden"><Image src={template.image} alt={`${template.name} partner template`} fill sizes="(max-width: 1024px) 100vw, 430px" className="object-cover transition duration-700 group-hover:scale-[1.035]" /><div className="absolute inset-0 bg-gradient-to-t from-[#071f1d]/90 via-transparent to-transparent" /><span className="absolute left-5 top-5 rounded-full border border-white/25 bg-[#082b28]/65 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[.15em] backdrop-blur">Template {template.number}</span></div>
-                <div className="p-7"><p className="text-[9px] font-bold uppercase tracking-[.19em]" style={{ color: template.color }}>{template.eyebrow}</p><h3 className="mt-3 font-display text-3xl font-semibold">{template.name}</h3><p className="mt-4 min-h-20 text-sm leading-6 text-white/55">{template.body}</p><Link href={`/templates/${template.key}`} className="mt-7 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.15em] text-white">Open live concept <i className="ri-arrow-right-up-line" /></Link></div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+    <section className="px-3 py-3 md:px-6 md:py-6"><div className="relative mx-auto min-h-[660px] max-w-[1500px] overflow-hidden rounded-[28px] bg-[#092d29] text-white"><Image src="/images/wholesale/evlv-white-label-dropship.png" alt="Custom partner brand and fulfillment" fill sizes="100vw" className="object-cover object-[66%_center] opacity-72" /><div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,40,36,.99)_0%,rgba(7,40,36,.93)_43%,rgba(7,40,36,.35)_75%,rgba(7,40,36,.05)_100%)]" /><Reveal className="relative z-10 flex min-h-[660px] items-center px-7 py-16 md:px-16 lg:px-20"><div className="max-w-2xl"><p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#a7d0c4]">When the standard template is no longer enough</p><h2 className="mt-6 font-display text-5xl font-semibold leading-[.95] tracking-[-.05em] md:text-7xl">Graduate into your own brand.</h2><p className="mt-7 max-w-xl text-base leading-8 text-white/65">Established creators and higher-volume operators can qualify for custom storefront development and eligible fulfillment under their own customer-facing name.</p><p className="mt-7 border-l border-[#e5c494] pl-5 text-xs leading-6 text-white/45">Custom design and fulfillment are reviewed and scoped separately based on audience, order volume, and operating fit.</p><Link href="/#apply" className="mt-9 inline-flex min-h-14 items-center rounded-lg bg-white px-8 text-[10px] font-bold uppercase tracking-[.15em] text-[#102d28]">Start with an application</Link></div></Reveal></div></section>
 
-      <section className="mx-auto max-w-[1320px] px-5 py-20 md:px-8 md:py-28">
-        <Reveal className="rounded-[26px] border border-[#d4dfda] bg-white p-7 shadow-[0_24px_70px_rgba(16,45,40,.08)] md:p-12 lg:p-16">
-          <div className="grid gap-12 lg:grid-cols-[.72fr_1.28fr] lg:gap-20">
-            <div><p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#4c766b]">From invitation to live</p><h2 className="mt-5 font-display text-4xl font-semibold leading-[1.03] tracking-[-.04em] md:text-5xl">A guided launch, not another blank dashboard.</h2><p className="mt-6 text-sm leading-7 text-[#687770]">Every setup decision is reviewed before the public microsite is activated.</p></div>
-            <div className="divide-y divide-[#dde5e1] border-y border-[#dde5e1]">{steps.map(([number, title, body]) => <div key={number} className="grid gap-3 py-6 sm:grid-cols-[52px_1fr]"><span className="font-mono text-xs font-semibold text-[#4c766b]">{number}</span><div><h3 className="font-display text-xl font-semibold">{title}</h3><p className="mt-2 text-sm leading-6 text-[#687770]">{body}</p></div></div>)}</div>
-          </div>
-        </Reveal>
-      </section>
+    <section className="mx-auto max-w-[1320px] px-5 py-24 md:px-8 md:py-32"><Reveal className="grid gap-14 lg:grid-cols-[.72fr_1.28fr] lg:gap-24"><div><p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#4c766b]">Before you apply</p><h2 className="mt-5 font-display text-5xl font-semibold leading-[.98] tracking-[-.05em] md:text-6xl">Built for sellers, not recruiters.</h2><p className="mt-6 text-sm leading-7 text-[#687770]">This is a wholesale operating relationship built around real products and real customer orders.</p></div><div className="grid gap-10 sm:grid-cols-2"><div><p className="text-[9px] font-bold uppercase tracking-[.18em] text-[#4c766b]">Strong fit</p><ul className="mt-5 space-y-4 text-sm leading-6 text-[#4f625c]"><li>Category-aware creators and local connectors</li><li>Gyms, communities, and independent operators</li><li>People ready to serve an existing audience</li></ul></div><div><p className="text-[9px] font-bold uppercase tracking-[.18em] text-[#9a674e]">Not the model</p><ul className="mt-5 space-y-4 text-sm leading-6 text-[#4f625c]"><li>No downlines or recruiting commissions</li><li>No guaranteed or passive-income claims</li><li>No forced oversized starter inventory</li></ul></div></div></Reveal></section>
 
-      <section className="mx-auto max-w-[1320px] px-5 pb-20 md:px-8 md:pb-28">
-        <Reveal className="grid gap-10 rounded-[26px] bg-white p-7 md:p-12 lg:grid-cols-[.72fr_1.28fr] lg:gap-20 lg:p-16"><div><p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#4c766b]">Straight answers</p><h2 className="mt-5 font-display text-4xl font-semibold leading-[1.03] tracking-[-.04em] md:text-5xl">A real operating relationship—not a hype pitch.</h2><p className="mt-6 text-sm leading-7 text-[#687770]">The platform is designed to give serious partners useful leverage while keeping expectations and responsibilities clear.</p></div><div className="divide-y divide-[#dde5e1] border-y border-[#dde5e1]">{faqs.map(([question, answer]) => <details key={question} className="group py-6"><summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-xl font-semibold">{question}<i className="ri-add-line text-xl transition group-open:rotate-45" /></summary><p className="mt-4 max-w-2xl text-sm leading-7 text-[#687770]">{answer}</p></details>)}</div></Reveal>
-      </section>
+    <section className="mx-auto max-w-[1320px] px-5 pb-24 md:px-8 md:pb-32"><Reveal className="grid gap-12 border-t border-[#d6ded9] pt-16 lg:grid-cols-[.7fr_1.3fr] lg:gap-24"><div><p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#4c766b]">Straight answers</p><h2 className="mt-5 font-display text-4xl font-semibold leading-[1] tracking-[-.04em] md:text-5xl">Know before you apply.</h2></div><div className="divide-y divide-[#d6ded9] border-y border-[#d6ded9]">{faqs.map(([question, answer]) => <details key={question} className="group py-6"><summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-xl font-semibold">{question}<i className="ri-add-line text-xl transition group-open:rotate-45" /></summary><p className="mt-4 max-w-2xl text-sm leading-7 text-[#687770]">{answer}</p></details>)}</div></Reveal></section>
 
-      <section id="apply" className="px-3 pb-6 md:px-6">
-        <div className="mx-auto grid max-w-[1450px] gap-10 overflow-hidden rounded-[28px] bg-[#082b28] px-6 py-14 text-white md:px-12 md:py-20 lg:grid-cols-[.8fr_1.2fr] lg:gap-20 lg:px-20">
-          <div><p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#9fc9bc]">Private application</p><h2 className="mt-5 font-display text-4xl font-semibold leading-[1] tracking-[-.045em] md:text-6xl">Already active in the space? Start here.</h2><p className="mt-6 max-w-xl text-sm leading-7 text-white/60">Tell us what you understand about the category, who already trusts you, and how you would sell locally. Relationship-first applicants receive priority review.</p><div className="mt-8 space-y-3 text-xs text-white/60"><p><i className="ri-check-line mr-2 text-[#9fc9bc]" />Category knowledge valued</p><p><i className="ri-check-line mr-2 text-[#9fc9bc]" />Local and in-person selling welcomed</p><p><i className="ri-check-line mr-2 text-[#9fc9bc]" />No income guarantees or recruiting chain</p></div></div>
-          <ApplyPreview />
-        </div>
-      </section>
-
-      <section className="px-3 pb-6 md:px-6">
-        <div className="mx-auto max-w-[1450px] overflow-hidden rounded-[28px] bg-[#e5c494] px-6 py-16 text-center text-[#102d28] md:px-10 md:py-24">
-          <p className="text-[10px] font-bold uppercase tracking-[.23em]">EVLV Partner Network</p>
-          <h2 className="mx-auto mt-5 max-w-4xl font-display text-4xl font-semibold leading-[.98] tracking-[-.045em] md:text-6xl">Build a focused operation around a platform that is ready to work.</h2>
-          <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-[#304a45]">No recruiting chain. No public earnings promises. A reviewed partner relationship built around real inventory, real customer orders, and responsible operations.</p>
-          <div className="mt-9 flex flex-wrap justify-center gap-3"><Link href="/#apply" className="inline-flex min-h-14 items-center rounded-lg bg-[#102d28] px-8 text-[11px] font-bold uppercase tracking-[.15em] text-white">Apply for review</Link><Link href="/setup?preview=1" className="inline-flex min-h-14 items-center rounded-lg border border-[#102d28]/20 bg-white/30 px-8 text-[11px] font-bold uppercase tracking-[.15em]">Preview onboarding</Link><Link href="/dashboard" className="inline-flex min-h-14 items-center rounded-lg border border-[#102d28]/20 bg-white/30 px-8 text-[11px] font-bold uppercase tracking-[.15em]">Preview dashboard</Link></div>
-        </div>
-      </section>
-    </div>
-  );
+    <section id="apply" className="px-3 pb-6 md:px-6"><div className="mx-auto grid max-w-[1500px] gap-12 overflow-hidden rounded-[28px] bg-[#082b28] px-6 py-16 text-white md:px-12 md:py-24 lg:grid-cols-[.82fr_1.18fr] lg:gap-24 lg:px-20"><div><p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#9fc9bc]">Private application</p><h2 className="mt-6 font-display text-5xl font-semibold leading-[.95] tracking-[-.05em] md:text-7xl">Ready to test your market?</h2><p className="mt-7 max-w-xl text-base leading-8 text-white/62">Tell us who you reach, what you know about the category, and how you would sell. Qualified applicants receive the next-step pricing and setup review.</p><div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 text-[11px] text-white/48"><span>Reviewed access</span><span>No income guarantee</span><span>Research use only</span></div></div><ApplyPreview /></div></section>
+  </div>;
 }
 
+function ValueLine({ number, title, body }: { number: string; title: string; body: string }) { return <div className="grid gap-3 sm:grid-cols-[48px_1fr]"><span className="font-mono text-xs font-semibold text-[#7b978f]">{number}</span><div><h3 className="font-display text-2xl font-semibold">{title}</h3><p className="mt-2 text-sm leading-6 text-[#687770]">{body}</p></div></div>; }
+function FunnelStep({ number, label, title, body }: { number: string; label: string; title: string; body: string }) { return <Reveal className="grid gap-5 border-b border-[#d7dfdb] py-9 last:border-b-0 md:grid-cols-[100px_.8fr_1.2fr] md:items-center"><span className="font-display text-5xl font-semibold text-[#aec5be]">{number}</span><div><p className="text-[9px] font-bold uppercase tracking-[.2em] text-[#8a6a43]">{label}</p><h3 className="mt-2 font-display text-3xl font-semibold">{title}</h3></div><p className="max-w-xl text-sm leading-7 text-[#687770]">{body}</p></Reveal>; }
