@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+:root {
+  --font-display: var(--font-poppins);
+  --font-body: var(--font-inter);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #f2f3ef; color: #102d28; font-family: var(--font-body), Arial, sans-serif; }
+button, input, textarea { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+.font-display { font-family: var(--font-display), var(--font-body), sans-serif; }
+::selection { background: #9fc9bc; color: #082b28; }
+:focus-visible { outline: 2px solid #b8875a; outline-offset: 3px; }
+
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 650ms ease-out, transform 650ms ease-out; }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
