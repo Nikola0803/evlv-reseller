@@ -103,7 +103,7 @@ export default function PartnerNetworkPage() {
       <Reveal className="mt-14 grid overflow-hidden rounded-[24px] border border-[#d8dfdc] bg-white sm:grid-cols-3"><RhythmMetric value="10" label="Illustrative units per week" body="A manageable target for an active local or audience-led seller." /><RhythmMetric value="40+" label="Illustrative units per month" body="Enough activity to learn which products actually move." /><RhythmMetric value="1" label="Connected operating system" body="Private pricing, orders, inventory, storefront, and support in one account." /></Reveal>
     </section>
 
-    <section id="how" className="mx-auto max-w-[1320px] px-5 py-24 md:px-8 md:py-36">
+    <section id="how" className="mx-auto max-w-[1320px] px-5 pb-24 pt-10 md:px-8 md:pb-36 md:pt-14">
       <Reveal className="max-w-4xl"><p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#4c766b]">From interest to open</p><h2 className="mt-6 font-display text-4xl font-semibold leading-[1.02] tracking-[-.045em] md:text-6xl">A simple way to test whether this can become something bigger.</h2></Reveal>
       <div className="mt-16 border-y border-[#d7dfdb]">
         <FunnelStep number="01" label="Apply" title="Tell us who you reach" body="We review category familiarity, audience fit, and how you plan to sell." />

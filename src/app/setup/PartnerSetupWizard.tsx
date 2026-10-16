@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { StorefrontPreview, type StorefrontTemplate } from "@/components/StorefrontPreview";
 
 const steps = ["Identity", "Design", "Catalogue", "Payments", "Launch"];
@@ -36,12 +36,44 @@ export function PartnerSetupWizard() {
   const [selectedProducts, setSelectedProducts] = useState<string[]>(catalogue.map((product) => product.sku));
   const [retailPrices, setRetailPrices] = useState<Record<string, number>>(Object.fromEntries(catalogue.map((product) => [product.sku, product.suggested])));
   const [payments, setPayments] = useState({ venmo: "", zelle: "", cashapp: "" });
+  const [hydrated, setHydrated] = useState(false);
+  const [saveState, setSaveState] = useState<"saved" | "saving">("saved");
   const url = useMemo(() => `evlvpartners.com/${slug || "yourname"}`, [slug]);
+
+  useEffect(() => {
+    const stored = window.localStorage.getItem("evlv-partner-storefront");
+    if (stored) {
+      try {
+        const config = JSON.parse(stored);
+        if (config.displayName) setDisplayName(config.displayName);
+        if (config.slug) setSlug(config.slug);
+        if (config.bio) setBio(config.bio);
+        if (config.template) setTemplate(config.template);
+        if (config.palette) setPalette(config.palette);
+        if (Array.isArray(config.selectedProducts)) setSelectedProducts(config.selectedProducts);
+        if (config.retailPrices) setRetailPrices(config.retailPrices);
+        if (config.payments) setPayments(config.payments);
+      } catch {
+        window.localStorage.removeItem("evlv-partner-storefront");
+      }
+    }
+    setHydrated(true);
+  }, []);
+
+  useEffect(() => {
+    if (!hydrated) return;
+    setSaveState("saving");
+    const timer = window.setTimeout(() => {
+      window.localStorage.setItem("evlv-partner-storefront", JSON.stringify({ displayName, slug, bio, template, palette, selectedProducts, retailPrices, payments, updatedAt: new Date().toISOString() }));
+      setSaveState("saved");
+    }, 250);
+    return () => window.clearTimeout(timer);
+  }, [hydrated, displayName, slug, bio, template, palette, selectedProducts, retailPrices, payments]);
 
   function normalizeSlug(value: string) { setSlug(value.toLowerCase().replace(/[^a-z0-9-]/g, "").replace(/-+/g, "-").slice(0, 28)); }
 
   return <div className="min-h-[calc(100vh-100px)] bg-[#edf1ee] text-[#102d28]">
-    <div className="border-b border-white/10 bg-[#082b28] text-white"><div className="mx-auto flex max-w-[1500px] flex-wrap items-center justify-between gap-4 px-5 py-7 md:px-8"><div><p className="text-[9px] font-bold uppercase tracking-[.21em] text-[#9fc9bc]">EVLV Partner Command</p><h1 className="mt-2 font-display text-3xl font-semibold tracking-[-.035em]">Build your microsite.</h1></div><div className="flex items-center gap-3"><span className="rounded-full border border-[#9fc9bc]/25 bg-[#9fc9bc]/10 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[.13em] text-[#b9d9ce]">Concept preview</span><Link href="/" className="text-[10px] font-bold uppercase tracking-[.12em] text-white/60">Exit preview</Link></div></div></div>
+    <div className="border-b border-white/10 bg-[#082b28] text-white"><div className="mx-auto flex max-w-[1500px] flex-wrap items-center justify-between gap-4 px-5 py-7 md:px-8"><div><p className="text-[9px] font-bold uppercase tracking-[.21em] text-[#9fc9bc]">EVLV Partner Command</p><h1 className="mt-2 font-display text-3xl font-semibold tracking-[-.035em]">Edit your storefront.</h1></div><div className="flex items-center gap-3"><span className="rounded-full border border-[#9fc9bc]/25 bg-[#9fc9bc]/10 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[.13em] text-[#b9d9ce]"><i className={`${saveState === "saved" ? "ri-checkbox-circle-line" : "ri-loader-4-line"} mr-1`} />{saveState === "saved" ? "Changes saved" : "Saving"}</span><Link href={`/templates/${template}`} className="rounded-lg bg-white px-4 py-2.5 text-[9px] font-bold uppercase tracking-[.12em] text-[#082b28]">View storefront</Link><Link href="/dashboard" className="text-[10px] font-bold uppercase tracking-[.12em] text-white/60">Dashboard</Link></div></div></div>
     <div className="mx-auto grid min-w-0 max-w-[1500px] lg:grid-cols-[275px_1fr]">
       <aside className="min-w-0 border-b border-[#d4dfda] bg-white p-5 lg:min-h-[calc(100vh-195px)] lg:border-b-0 lg:border-r lg:p-7"><p className="text-[9px] font-bold uppercase tracking-[.17em] text-[#648078]">Launch progress</p><div className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-4 lg:block lg:space-y-2">{steps.map((label, index) => <button key={label} onClick={() => setStep(index)} className={`flex min-w-0 items-center gap-2 rounded-lg px-3 py-3 text-left text-[8px] font-bold uppercase tracking-[.06em] sm:text-[9px] lg:w-full lg:gap-3 lg:px-4 lg:text-[10px] lg:tracking-[.1em] ${step === index ? "bg-[#102d28] text-white" : index < step ? "bg-[#e6f0ec] text-[#356f60]" : "text-[#71807b] hover:bg-[#f0f3f1]"}`}><span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[9px] ${step === index ? "bg-white/15" : "bg-black/[.05]"}`}>{index < step ? <i className="ri-check-line" /> : index + 1}</span><span className="min-w-0 leading-4">{label}</span></button>)}</div><div className="mt-8 hidden rounded-xl bg-[#eef3f0] p-4 lg:block"><p className="text-[9px] font-bold uppercase tracking-[.15em] text-[#567d72]">Reserved address</p><p className="mt-3 break-all font-mono text-xs text-[#315d53]">{url}</p><p className="mt-3 text-xs leading-5 text-[#71807b]">Your address stays connected to your account after launch.</p></div></aside>
       <main className="min-w-0 overflow-hidden p-5 md:p-8 lg:p-12">
