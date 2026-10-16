@@ -1,9 +1,12 @@
-export type StorefrontTemplate = "creator" | "studio" | "catalogue";
+export type StorefrontTemplate = "creator" | "studio" | "catalogue" | "framework" | "volume" | "institutional";
 
 const previewMeta: Record<StorefrontTemplate, { title: string; domain: string }> = {
   creator: { title: "Editorial storefront preview", domain: "partner-name.com" },
   studio: { title: "Precision storefront preview", domain: "research-studio.com" },
   catalogue: { title: "Direct storefront preview", domain: "direct-catalogue.com" },
+  framework: { title: "Framework storefront preview", domain: "framework-supply.com" },
+  volume: { title: "Volume storefront preview", domain: "volume-research.com" },
+  institutional: { title: "Institutional storefront preview", domain: "institutional-labs.com" },
 };
 
 export function StorefrontPreview({ template, className = "" }: { template: StorefrontTemplate; className?: string }) {

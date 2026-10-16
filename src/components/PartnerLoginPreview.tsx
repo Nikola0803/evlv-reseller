@@ -1,0 +1,8 @@
+"use client";
+
+import { useState } from "react";
+
+export function PartnerLoginPreview() {
+  const [notice, setNotice] = useState("");
+  return <form onSubmit={(event) => { event.preventDefault(); setNotice("Preview only. Production login will validate the approved CRM account on the server."); }} className="mt-9 space-y-4"><label className="block"><span className="text-[9px] font-bold uppercase tracking-[.14em] text-[#567d72]">Approved account email</span><input required type="email" autoComplete="email" className="mt-2 h-13 w-full rounded-xl border border-[#cedbd6] px-4 text-sm outline-none focus:border-[#356f60]" placeholder="you@business.com" /></label><label className="block"><span className="text-[9px] font-bold uppercase tracking-[.14em] text-[#567d72]">Password</span><input required type="password" autoComplete="current-password" className="mt-2 h-13 w-full rounded-xl border border-[#cedbd6] px-4 text-sm outline-none focus:border-[#356f60]" placeholder="••••••••••••" /></label><div className="flex items-center justify-between gap-4"><label className="flex items-center gap-2 text-xs text-[#687770]"><input type="checkbox" className="accent-[#356f60]" />Remember this device</label><button type="button" className="text-[9px] font-bold uppercase tracking-[.11em] text-[#356f60]">Reset password</button></div><button type="submit" className="flex min-h-14 w-full items-center justify-center rounded-xl bg-[#102d28] px-7 text-[10px] font-bold uppercase tracking-[.15em] text-white">Login to Partner Command <i className="ri-arrow-right-line ml-2" /></button>{notice && <p role="status" className="rounded-xl bg-[#e8f1ed] p-4 text-xs leading-6 text-[#4f6f66]">{notice}</p>}</form>;
+}

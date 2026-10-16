@@ -1,0 +1,14 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { PartnerLoginPreview } from "@/components/PartnerLoginPreview";
+
+export const metadata: Metadata = {
+  title: "Approved Partner Login | EVLV",
+  description: "Private account access for approved EVLV wholesale partners.",
+  robots: { index: false, follow: false, nocache: true },
+};
+
+export default function PartnerLoginPage() {
+  return <div className="bg-[#eff2f0] px-4 py-10 text-[#102d28] md:px-8 md:py-16"><div className="mx-auto grid min-h-[720px] max-w-[1280px] overflow-hidden rounded-[28px] bg-white shadow-[0_30px_90px_rgba(15,45,40,.12)] lg:grid-cols-[.95fr_1.05fr]"><div className="relative min-h-[440px] overflow-hidden bg-[#171b22] text-white lg:min-h-full"><Image src="/images/wholesale/blank-vial-margin-v2.png" alt="Private EVLV partner inventory" fill priority sizes="(max-width:1024px) 100vw, 50vw" className="object-cover opacity-68" /><div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(23,27,34,.12)_0%,rgba(23,27,34,.94)_100%)]" /><div className="absolute inset-x-0 bottom-0 p-7 sm:p-10 md:p-12"><p className="text-[9px] font-bold uppercase tracking-[.2em] text-[#7ee0d0]">Approved access only</p><h1 className="mt-5 max-w-xl font-display text-4xl font-semibold leading-[1.02] tracking-[-.045em] md:text-5xl">Private pricing and partner operations in one account.</h1><div className="mt-8 grid gap-3 text-xs text-white/60 sm:grid-cols-2"><p><i className="ri-price-tag-3-line mr-2 text-[#7ee0d0]" />Private acquisition pricing</p><p><i className="ri-box-3-line mr-2 text-[#7ee0d0]" />Live CRM inventory</p><p><i className="ri-layout-4-line mr-2 text-[#7ee0d0]" />Storefront controls</p><p><i className="ri-shopping-bag-3-line mr-2 text-[#7ee0d0]" />Orders and reorders</p></div></div></div><div className="flex items-center p-7 sm:p-10 md:p-14"><div className="w-full"><p className="text-[9px] font-bold uppercase tracking-[.2em] text-[#4c766b]">EVLV Partner Command</p><h2 className="mt-5 font-display text-4xl font-semibold tracking-[-.045em]">Access your approved account.</h2><p className="mt-5 max-w-lg text-sm leading-7 text-[#687770]">There is no public account creation. EVLV manually approves each partner, then sends a single-use invitation from the CRM to activate login access.</p><PartnerLoginPreview /><div className="mt-8 border-t border-[#dbe2df] pt-7"><p className="text-sm font-semibold">Do not have an approved account?</p><p className="mt-2 text-xs leading-6 text-[#71807b]">Submit the private application first. Qualified applicants receive account setup instructions directly from EVLV.</p><Link href="/#apply" className="mt-5 inline-flex text-[9px] font-bold uppercase tracking-[.14em] text-[#356f60]">Request partner review <i className="ri-arrow-right-line ml-2" /></Link></div></div></div></div></div>;
+}

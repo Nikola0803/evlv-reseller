@@ -6,7 +6,7 @@ import { MicrositeContact } from "@/components/MicrositeContact";
 
 export const metadata: Metadata = { title: "Partner Microsite Preview", robots: { index: false, follow: false } };
 
-type TemplateKey = "creator" | "studio" | "catalogue";
+type TemplateKey = "creator" | "studio" | "catalogue" | "framework" | "volume" | "institutional";
 type StoreVariant = "default" | "editorial" | "precision" | "direct";
 
 type Product = { name: string; price: string; stock: string; category: string; image: string; coa: string | null; batch: string; purity: string };
@@ -22,7 +22,7 @@ const PRODUCTS: Product[] = [
   { name: "BPC-157 10MG", price: "$70.00", stock: "10 available", category: "Research", image: "/images/storefronts/products/bpc-157-10mg.png", coa: null, batch: "Current batch", purity: "Documentation available" },
 ];
 
-const TEMPLATE_NAMES: Record<TemplateKey, string> = { creator: "Editorial", studio: "Precision", catalogue: "Direct" };
+const TEMPLATE_NAMES: Record<TemplateKey, string> = { creator: "Editorial", studio: "Precision", catalogue: "Direct", framework: "Framework", volume: "Volume", institutional: "Institutional" };
 
 export default async function TemplateConceptPage({ params }: { params: Promise<{ template: string }> }) {
   const { template: rawTemplate } = await params;
@@ -30,7 +30,8 @@ export default async function TemplateConceptPage({ params }: { params: Promise<
   const template = rawTemplate as TemplateKey;
   if (template === "creator") return <SignatureStore />;
   if (template === "studio") return <LedgerStore />;
-  return <MarketStore />;
+  if (template === "catalogue") return <MarketStore />;
+  return <ScaleStore template={template} />;
 }
 
 function PreviewBar({ template }: { template: TemplateKey }) {
@@ -68,6 +69,36 @@ function MarketStore() {
       <ConversionStrip variant="direct" /><ProductGrid heading="Available partner inventory" theme="market" /><StoreOperations partner="Covalent" variant="direct" /><CoaLibrary partner="Covalent" variant="direct" /><StoreFAQ partner="Covalent" variant="direct" /><ContactSection partner="Covalent" variant="direct" /><StandardsStrip variant="direct" />
     </main><MicrositeFooter partner="Covalent Market" variant="direct" /><MobileStoreNav variant="direct" />
   </div>;
+}
+
+const SCALE_STORES = {
+  framework: { brand: "FRAME / RESEARCH", eyebrow: "Structured independent commerce", title: "Built to sell. Ready to scale.", body: "A balanced storefront for operators who need clear navigation, complete product context, and an efficient route from discovery to order.", base: "#17233d", accent: "#f2784b", surface: "#f3f5f9", theme: "technical" as const },
+  volume: { brand: "VOLUME LAB SUPPLY", eyebrow: "High-capacity product commerce", title: "More catalogue. Less friction.", body: "A conversion-focused product system for established sellers managing broader selection, repeat orders, and consistent customer demand.", base: "#171719", accent: "#e95062", surface: "#f5f5f6", theme: "market" as const },
+  institutional: { brand: "MERIDIAN RESEARCH", eyebrow: "Modern institutional supply", title: "A cleaner way to purchase research inventory.", body: "A professional storefront for larger teams that need documented products, simple purchasing, and direct account support.", base: "#27254f", accent: "#7ee0d0", surface: "#f0f1f8", theme: "warm" as const },
+};
+
+function ScaleStore({ template }: { template: "framework" | "volume" | "institutional" }) {
+  const store = SCALE_STORES[template];
+  const partner = template === "framework" ? "Frame Research" : template === "volume" ? "Volume Lab Supply" : "Meridian Research";
+  return <div className="min-h-screen text-[#18191d]" style={{ backgroundColor: store.surface }}>
+    <PreviewBar template={template} />
+    <header id="home" className="sticky top-0 z-40 border-b border-black/10 bg-white/95 backdrop-blur"><div className="mx-auto flex max-w-[1500px] items-center justify-between px-4 py-4 md:px-8 md:py-5"><div className="flex items-center gap-3"><span className="grid h-10 w-10 place-items-center text-xs font-bold text-white" style={{ backgroundColor: store.base }}>{template === "framework" ? "F/R" : template === "volume" ? "VL" : "MR"}</span><span className="font-display text-lg font-semibold tracking-[-.04em] sm:text-xl">{store.brand}</span></div><StoreNav /><button className="rounded-md px-5 py-3 text-[8px] font-bold uppercase tracking-[.14em] text-white" style={{ backgroundColor: store.base }}>Bag · 0</button></div></header>
+    <main>
+      <section className="px-3 py-3 md:px-6 md:py-6"><div className="mx-auto grid max-w-[1500px] overflow-hidden text-white lg:grid-cols-[.9fr_1.1fr]" style={{ backgroundColor: store.base }}><div className="flex min-h-[590px] flex-col justify-center p-7 md:p-14"><p className="text-[9px] font-bold uppercase tracking-[.21em]" style={{ color: store.accent }}>{store.eyebrow}</p><h1 className="mt-7 max-w-3xl font-display text-[clamp(3.1rem,5.1vw,5.8rem)] font-semibold leading-[.91] tracking-[-.052em]">{store.title}</h1><p className="mt-7 max-w-xl text-base leading-8 text-white/62">{store.body}</p><div className="mt-9 flex flex-wrap gap-3"><a href="#catalogue" className="inline-flex min-h-14 items-center px-8 text-[10px] font-bold uppercase tracking-[.15em] text-[#18191d]" style={{ backgroundColor: store.accent }}>Open catalogue</a><a href="#coas" className="inline-flex min-h-14 items-center border border-white/20 px-7 text-[10px] font-bold uppercase tracking-[.15em]">Review documentation</a></div><div className="mt-12 flex gap-8 border-t border-white/15 pt-6 text-[8px] font-bold uppercase tracking-[.14em] text-white/48"><span>8 live products</span><span>U.S. dispatch</span><span>Direct support</span></div></div><ScaleHeroStage template={template} base={store.base} accent={store.accent} /></div></section>
+      <section className="border-y border-black/10 bg-white"><div className="mx-auto grid max-w-[1380px] grid-cols-2 divide-x divide-y divide-black/10 md:grid-cols-4 md:divide-y-0">{[["ri-file-shield-2-line", "Exact COAs"], ["ri-box-3-line", "Current stock"], ["ri-customer-service-2-line", "Account support"], ["ri-refresh-line", "Simple reorders"]].map(([icon, label]) => <div key={label} className="flex min-h-20 items-center justify-center gap-3 px-4 text-[8px] font-bold uppercase tracking-[.14em]"><i className={`${icon} text-lg`} style={{ color: store.accent }} />{label}</div>)}</div></section>
+      <ProductGrid heading={`${partner} catalogue`} theme={store.theme} />
+      <StoreOperations partner={partner} variant={template === "volume" ? "direct" : template === "institutional" ? "editorial" : "precision"} />
+      <CoaLibrary partner={partner} variant={template === "volume" ? "direct" : template === "institutional" ? "editorial" : "precision"} />
+      <StoreFAQ partner={partner} variant={template === "volume" ? "direct" : template === "institutional" ? "editorial" : "precision"} />
+      <ContactSection partner={partner} variant={template === "volume" ? "direct" : template === "institutional" ? "editorial" : "precision"} />
+      <StandardsStrip variant={template === "volume" ? "direct" : template === "institutional" ? "editorial" : "precision"} />
+    </main><MicrositeFooter partner={partner} variant={template === "volume" ? "direct" : template === "institutional" ? "editorial" : "precision"} /><MobileStoreNav variant={template === "volume" ? "direct" : template === "institutional" ? "editorial" : "precision"} />
+  </div>;
+}
+
+function ScaleHeroStage({ template, base, accent }: { template: "framework" | "volume" | "institutional"; base: string; accent: string }) {
+  const lead = template === "framework" ? PRODUCTS[0] : template === "volume" ? PRODUCTS[4] : PRODUCTS[2];
+  return <div className="relative min-h-[530px] overflow-hidden bg-white lg:min-h-[590px]"><div className="absolute inset-0 opacity-45" style={{ backgroundImage: `linear-gradient(135deg, ${accent}33 0%, transparent 55%)` }} /><div className="absolute inset-x-[7%] bottom-[7%] top-[7%] border border-black/10 bg-white shadow-[0_30px_90px_rgba(10,15,30,.18)]"><div className="absolute inset-x-0 top-0 flex h-12 items-center justify-between border-b border-black/10 px-5"><span className="text-[8px] font-bold uppercase tracking-[.17em]" style={{ color: base }}>Current selection</span><span className="h-2 w-2 rounded-full" style={{ backgroundColor: accent }} /></div><div className="grid h-full items-center px-5 pb-5 pt-16 sm:grid-cols-[1.2fr_.8fr] sm:px-9"><div className="relative h-full min-h-[310px]"><Image src={lead.image} alt={`${lead.name} blank white-label vial`} fill priority sizes="(max-width:1024px) 100vw, 520px" className="object-contain p-4" /></div><div className="border-t border-black/10 py-6 sm:border-l sm:border-t-0 sm:pl-8"><p className="text-[8px] font-bold uppercase tracking-[.16em]" style={{ color: accent }}>Featured record</p><h2 className="mt-4 font-display text-3xl font-semibold tracking-[-.04em] text-[#18191d]">{lead.name}</h2><p className="mt-3 text-sm text-[#696c75]">{lead.stock} · {lead.purity}</p><a href="#catalogue" className="mt-7 inline-flex min-h-12 items-center px-6 text-[8px] font-bold uppercase tracking-[.14em] text-white" style={{ backgroundColor: base }}>View product</a></div></div></div></div>;
 }
 
 function EditorialHeroStage() { return <div className="relative min-h-[500px] overflow-hidden bg-[#1f45c8] lg:min-h-[650px]"><Image src="/images/storefronts/hero-editorial-v2.png" alt="Jordan curated research catalogue" fill priority sizes="(max-width: 1024px) 100vw, 760px" className="object-cover" /><div className="absolute inset-0 bg-gradient-to-t from-[#0b1c62]/45 via-transparent to-transparent" /><div className="absolute left-6 top-6 border border-white/30 bg-[#162e8f]/70 px-4 py-2 text-[8px] font-bold uppercase tracking-[.18em] text-white backdrop-blur">Jordan&apos;s shelf · 01</div><div className="absolute bottom-6 left-6 right-6 flex items-center justify-between border border-white/35 bg-[#101114]/85 p-4 text-white backdrop-blur sm:left-8 sm:right-8"><div><p className="text-[7px] font-bold uppercase tracking-[.16em] text-[#ff8a67]">Featured collection</p><p className="mt-1 font-display text-xl font-semibold">Three documented selections</p></div><a href="#catalogue" className="grid h-10 w-10 place-items-center rounded-full bg-[#ff7655] text-white"><i className="ri-arrow-down-line" /></a></div></div>; }
