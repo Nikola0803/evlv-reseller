@@ -1,13 +1,9 @@
 "use client";
 
 import { useEffect } from "react";
+import { PARTNER_CATALOG } from "@/lib/partner-catalog";
 
-const SKU_BY_NAME: Record<string, string> = {
-  "GLP3-R 10MG": "GLP3R10",
-  "GLP2-T 10MG": "GLP2T10",
-  "GLP1-S 5MG": "GLP1S5",
-  "GHK-CU 50MG": "GHK50",
-};
+const SKU_BY_NAME = Object.fromEntries(PARTNER_CATALOG.map((product) => [product.name, product.sku]));
 
 export function StorefrontRuntime() {
   useEffect(() => {
@@ -38,7 +34,8 @@ export function StorefrontRuntime() {
           if (/text-\[#(3157d5|1684ad|d7ff54|f2784b|e95062|7ee0d0|6fd6ff)\]/.test(classes)) node.style.color = colors[1];
         });
       }
-      const selected = new Set<string>(config.selectedProducts || []);
+      const savedSelection = Array.isArray(config.selectedProducts) ? config.selectedProducts : [];
+      const selected = new Set<string>(savedSelection.length > 4 ? savedSelection : PARTNER_CATALOG.map((product) => product.sku));
       document.querySelectorAll<HTMLElement>("#catalogue h3, #catalogue [data-product-name]").forEach((nameNode) => {
         const name = nameNode.textContent?.trim() || "";
         const sku = SKU_BY_NAME[name];

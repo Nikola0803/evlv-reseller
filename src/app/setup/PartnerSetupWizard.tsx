@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { StorefrontPreview, type StorefrontTemplate } from "@/components/StorefrontPreview";
+import { PARTNER_CATALOG } from "@/lib/partner-catalog";
 
 const steps = ["Identity", "Design", "Catalogue", "Payments", "Launch"];
 const templates = [
@@ -19,12 +20,7 @@ const palettes = [
   { key: "signal", name: "Signal", colors: ["#171718", "#d7ff54", "#f3f3f3"] },
   { key: "indigo", name: "Indigo", colors: ["#27254f", "#7ee0d0", "#f0f1f8"] },
 ];
-const catalogue = [
-  { sku: "GLP3R10", name: "GLP3-R 10MG", cost: 40, suggested: 100 },
-  { sku: "GLP2T10", name: "GLP2-T 10MG", cost: 34, suggested: 85 },
-  { sku: "GLP1S5", name: "GLP1-S 5MG", cost: 22, suggested: 59 },
-  { sku: "GHK50", name: "GHK-CU 50MG", cost: 18, suggested: 49 },
-];
+const catalogue = PARTNER_CATALOG.map((product) => ({ sku: product.sku, name: product.name, cost: product.partnerPrice, suggested: product.retailPrice }));
 
 export function PartnerSetupWizard() {
   const [step, setStep] = useState(0);
@@ -50,8 +46,8 @@ export function PartnerSetupWizard() {
         if (config.bio) setBio(config.bio);
         if (config.template) setTemplate(config.template);
         if (config.palette) setPalette(config.palette);
-        if (Array.isArray(config.selectedProducts)) setSelectedProducts(config.selectedProducts);
-        if (config.retailPrices) setRetailPrices(config.retailPrices);
+        if (Array.isArray(config.selectedProducts) && config.selectedProducts.length > 4) setSelectedProducts(config.selectedProducts);
+        if (config.retailPrices) setRetailPrices({ ...Object.fromEntries(catalogue.map((product) => [product.sku, product.suggested])), ...config.retailPrices });
         if (config.payments) setPayments(config.payments);
       } catch {
         window.localStorage.removeItem("evlv-partner-storefront");
