@@ -17,15 +17,7 @@ function clean(value: unknown, maxLength: number) {
   return typeof value === "string" ? value.trim().slice(0, maxLength) : "";
 }
 
-function configured() {
-  return Boolean(process.env.CRM_API_URL && process.env.CRM_ORG_API_KEY && process.env.CRM_STORE_DOMAIN);
-}
-
 export async function POST(request: Request) {
-  if (!configured()) {
-    return NextResponse.json({ error: "Applications are temporarily unavailable. Please email office@evlvpeptides.com." }, { status: 503 });
-  }
-
   const body = await request.json().catch(() => null) as ApplicationBody | null;
   if (!body) return NextResponse.json({ error: "Invalid application." }, { status: 400 });
 
@@ -45,13 +37,19 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Please complete all required fields with a valid email address." }, { status: 400 });
   }
 
-  const crmResponse = await fetch(`${process.env.CRM_API_URL}/api/store/wholesale/inquiry`, {
+  const hasDirectCrmAccess = Boolean(process.env.CRM_API_URL && process.env.CRM_ORG_API_KEY && process.env.CRM_STORE_DOMAIN);
+  const submissionUrl = hasDirectCrmAccess
+    ? `${process.env.CRM_API_URL}/api/store/wholesale/inquiry`
+    : process.env.PARTNER_APPLICATION_PROXY_URL || "https://www.evlvpeptides.com/api/wholesale/inquiry";
+  const headers: Record<string, string> = { "Content-Type": "application/json" };
+  if (hasDirectCrmAccess) {
+    headers["x-store-domain"] = process.env.CRM_STORE_DOMAIN!;
+    headers["x-store-api-key"] = process.env.CRM_ORG_API_KEY!;
+  }
+
+  const crmResponse = await fetch(submissionUrl, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "x-store-domain": process.env.CRM_STORE_DOMAIN!,
-      "x-store-api-key": process.env.CRM_ORG_API_KEY!,
-    },
+    headers,
     cache: "no-store",
     body: JSON.stringify({
       programType: "EVLV Partner Reseller",
